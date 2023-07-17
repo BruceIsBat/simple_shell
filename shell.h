@@ -7,6 +7,6 @@
 #include <sys/wait.h>
 
 void handle_status(char *file_name);
-void exec_cmd (char *args, char *file_name);
+void exce_cmd (char *args, char *file_name);
 
 #endif
