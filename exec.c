@@ -8,11 +8,12 @@
  */
 void exce_cmd(char *args, char *file_name)
 {
-	char *ags[10];
+	char *ags[10] = {NULL};
 	int index = 0;
+	pid_t child;
 
 	/*please explain again*/
-	ags[0] = strtok(ads, " ");
+	ags[0] = strtok(*ags, " ");
 
 	while (ags[index] != NULL)
 	{
@@ -20,7 +21,7 @@ void exce_cmd(char *args, char *file_name)
 		ags[index] = strtok(NULL, " ");
 	}
 	ags[index] = NULL;/* to this place*/
-	pid_t child = fork();
+	child = fork();
 
 	if (child == -1)
 	{

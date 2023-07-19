@@ -10,6 +10,7 @@ void handle_status(char *file_name)
 	char *args = NULL;
 	ssize_t read;
 	size_t n;
+	int i;
 
 	n = 0;
 
@@ -26,8 +27,6 @@ void handle_status(char *file_name)
 				free(args);
 				exit(EXIT_FAILURE);
 			}
-
-			int i;
 
 			i = 0;
 
