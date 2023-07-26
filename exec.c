@@ -6,36 +6,40 @@
  *
  * Return: returns -1 for error or 0 for successful child process.
  */
-void exce_cmd(char *args, char *file_name)
+void exce_cmd(char **args, char *file_name)
 {
-	char *ags[10] = {NULL};
-	int index = 0;
 	pid_t child;
+	char *command_path;
+	int status;
 
-	/*please explain again*/
-	ags[0] = strtok(*ags, " ");
+	command_path = find_cmd(args[0]);
 
-	while (ags[index] != NULL)
+	if (command_path == NULL)
 	{
-		index++;
-		ags[index] = strtok(NULL, " ");
+		printf("Command not found: %s\n", args[0]);
+		return;
 	}
-	ags[index] = NULL;/* to this place*/
+
 	child = fork();
 
 	if (child == -1)
 	{
-		free(args);
+		free(command_path);
 		perror(file_name);
+		exit(EXIT_FAILURE);
 	}
 	else if (child == 0)
 	{
-		if (execve(ags[0], ags, NULL) == -1)
+		if (execve(command_path, args, NULL) == -1)
 		{
 			perror(file_name);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
-		wait(NULL);
+	{
+		wait(&status);
+	}
+
+	free(command_path);
 }

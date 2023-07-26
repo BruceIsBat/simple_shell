@@ -1,5 +1,12 @@
 #include "shell.h"
 /**
+ * display_prompt - Display the shell prompt
+ */
+void display_prompt(void)
+{
+	printf("#cisfun$ ");
+}
+/**
  * handle_status - handle status
  * @file_name: gets the file name
  *
@@ -7,16 +14,15 @@
  */
 void handle_status(char *file_name)
 {
-	char *args = NULL;
+	char *args = NULL, *token, *arguments[MAX_ARGS];
 	ssize_t read;
 	size_t n;
 	int i;
 
 	n = 0;
-
 	while (1)
 	{
-		printf("#cisfun$ ");
+		display_prompt();
 
 		read = getline(&args, &n, stdin);
 
@@ -30,19 +36,22 @@ void handle_status(char *file_name)
 
 			i = 0;
 
-			while (args[i])
+			token = strtok(args, " \n");
+
+			while (token != NULL && i < MAX_ARGS)
 			{
-				if (args[i] == '\n')
-					args[i] = 0;
+				arguments[i] = token;
+				token = strtok(NULL, " \n");
 				i++;
 			}
+			arguments[i] = NULL;
 
-
-			if (strcmp(args, "exit") == 0)
+			if (strcmp(arguments[0], "exit") == 0)
 			{
 				break;
 			}
-			exce_cmd(args, file_name);
+			exce_cmd(arguments, file_name);
 		}
 	}
+	free(args);
 }
