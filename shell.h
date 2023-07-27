@@ -1,28 +1,30 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#define BUFSIZE 1024
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
-<<<<<<< HEAD
 #include <sys/types.h>
 
-void *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
-void _memset(char *str, int fill, int n);
-void _memcpy(char *dest, char *src, unsigned int bytes);
-char *_getline(int file);
-=======
 
 #define MAX_ARGS 10
 #define MAX_PATH_LENGTH 1024
->>>>>>> ededaeeb9759acd91bd29e0dc79d18fdebcbcd37
 
+#include "shell.h"
+
+int printString(char *s);
 void handle_status(char *file_name);
 void exce_cmd(char **args, char *file_name);
 char *find_cmd(char *command);
 
+/******** String functions *******/
+char *str_dup(char *string);
+char *str_cpy(char *dest, char *src);
+char *str_cat(char *dest, char *src);
+int _strncmp(char *str1, char *str2, size_t n);
+int str_len(char *string);
+
+char *_strtok_r(char *str, char *delim, char **saveptr);
 #endif

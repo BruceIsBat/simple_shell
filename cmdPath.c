@@ -15,7 +15,7 @@ char *find_cmd(char *command)
 
 	if (path_env == NULL)
 	{
-		printf("Error: PATH environment variable not set.\n");
+		printString("Error: PATH environment variable not set.\n");
 		return (NULL);
 	}
 

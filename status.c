@@ -4,7 +4,7 @@
  */
 void display_prompt(void)
 {
-	printf("#cisfun$ ");
+	printString("#cisfun$ ");
 }
 /**
  * handle_status - handle status
