@@ -36,7 +36,8 @@ int main(void)
 	 while (1)
                 {
                 sig_flag = 0;
-                        if (pipe_flag == 0)
+                if (pipe_flag == 0)
+			if (isatty(STDIN_FILENO))
                         printString("#cisfun$: ");
                        buffer = _getline(STDIN_FILENO);
                         if (!buffer)
