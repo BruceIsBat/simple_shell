@@ -37,12 +37,12 @@ char *str_dup(char *string)
         dup = malloc(sizeof(char) * (length + 10));
 
         if (dup == NULL)
-        return (NULL);
+	        return (NULL);
+	for (i = 0; *(string + i); i++)
+        	*(dup + i) = *(string + i);
 
-        for (i = 0; *(string + i); i++)
-                *(dup + i) = *(string + i);
-                *(dup + length) = '\0';
-        return (dup);
+       *(dup + length) = '\0';
+     return (dup);
 }
 
 /**

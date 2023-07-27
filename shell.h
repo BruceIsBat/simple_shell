@@ -77,8 +77,8 @@ int str_len(char *string);
 char *str_dup(char *string);
 char *str_cpy(char *dest, char *src);
 char *str_cat(char *dest, char *src);
-int str_cmp(char *s1, char *s2);// for comparismi
-int _strncmp(char *str1, char *str2, size_t n);// second string
+int str_cmp(char *s1, char *s2);
+int _strncmp(char *str1, char *str2, size_t n);
 /* In string_operations_2.c */
 unsigned int word_count(char *str);
 int printString(char *s);

@@ -30,9 +30,9 @@ int main(void)
 
         linkedlist_path = list_from_path();
 
-        if (linkedlist_path == NULL)
+	        if (linkedlist_path == NULL)
                 return (-1);
-                saveptr = NULL;
+        	        saveptr = NULL;
 	 while (1)
                 {
                 sig_flag = 0;

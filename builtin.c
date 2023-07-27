@@ -25,9 +25,9 @@ int (*is_builtin(char *cmd))()
                         i = 0;
                 while (*builds[i].fun != NULL)
                 {
-                if (_strncmp(builds[i].cmd_str, cmd, str_len(builds[i].cmd_str)) == 0)
-                        return (builds[i].fun);
-                        i++;
+	                if (_strncmp(builds[i].cmd_str, cmd, str_len(builds[i].cmd_str)) == 0)
+        	                return (builds[i].fun);
+               	        i++;
                 }
         return (NULL);
 }
@@ -76,16 +76,16 @@ int _env(char **tokens, env_t *environment)
 {
         char **envir;
         if (tokens[1])
-        printString("No arguments are necessary\n");
-        envir = environ;
-        if (!envir || !environ)
-        return (-1);
-        for ( ; *envir; envir++)
-        {
-        write(STDOUT_FILENO, *envir, str_len(*envir));
-        write(STDOUT_FILENO, "\n", 1);
-        }
-                environment++;
+	        printString("No arguments are necessary\n");
+       		 envir = environ;
+       			 if (!envir || !environ)
+      				 return (-1);
+	        for ( ; *envir; envir++)
+       		 {
+       			 write(STDOUT_FILENO, *envir, str_len(*envir));
+		        write(STDOUT_FILENO, "\n", 1);
+       		 }
+                	environment++;
         return (0);
 }
 /**

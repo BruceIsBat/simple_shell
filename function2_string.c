@@ -60,7 +60,7 @@ int _atoi(char *s)
                 if (result < 0 && (s[n] < '0' || s[n] > '9'))
                 break;
         }
-                if (sign > 0)
-                        result *= -1;
-                        return (result);
+        if (sign > 0)
+                result *= -1;
+        return (result);
 }

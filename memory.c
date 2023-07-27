@@ -18,24 +18,24 @@ void *_realloc(char *ptr, unsigned int old_size, unsigned int new_size)
                 return (NULL);
                 return (buff);
         }
-        if (new_size == old_size)
+	if (new_size == old_size)
                 return (ptr);
-                if (new_size == 0 && ptr != NULL)
+        if (new_size == 0 && ptr != NULL)
                 {
                         free(ptr);
                         return (NULL);
                 }
-                if (new_size > old_size)
+        if (new_size > old_size)
                 {
                 buff = malloc(new_size * sizeof(char));
                         tmp = ptr;
                 _memset(buff, '\0', new_size);
-                for (i = 0; i < old_size; i++)
+	                for (i = 0; i < old_size; i++)
                         buff[i] = tmp[i];
                         free(ptr);
-                        return (buff);
-                }
-                return (ptr);
+                 return (buff);
+        	}
+        return (ptr);
 }
 /**
  *  * _memset - fills a given string with n number of fill chars

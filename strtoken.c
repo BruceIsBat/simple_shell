@@ -75,7 +75,7 @@ char *_strtok_r(char *s, char *delim, char **save_ptr)
         char *token;
         if (s == NULL)
         {
-        if (*save_ptr == NULL)
+	        if (*save_ptr == NULL)
                 return (NULL);
                 s = *save_ptr;
         }

@@ -8,9 +8,10 @@ char *_getenv(const char *name)
 {
         int i, j, len;
         char **env, *tmp;
-        if (!name)
-                return (NULL);
-                env = environ;
+	if (!name)
+           return (NULL);
+         env = environ;
+
         for (i = 0; env[i]; i++)
         {
                 for (len = 0; env[i][len] != '='; len++)
