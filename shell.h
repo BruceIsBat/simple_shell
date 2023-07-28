@@ -30,6 +30,7 @@ int (*is_builtin(char *cmd))();
 int _exit_with_grace(char **tokens, env_t *linkedlist_path, char *buffer);
 int _env(char **tokens, env_t *environment);
 int _cd(char **tokens);
+int non_interactive(void);
 
 /* In builtins_2.c */
 int _setenv_usr(char **tokens);

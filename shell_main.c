@@ -33,11 +33,12 @@ int main(void)
 	        if (linkedlist_path == NULL)
                 return (-1);
         	        saveptr = NULL;
+	if (isatty(STDIN_FILENO))
+	{
 	 while (1)
                 {
                 sig_flag = 0;
                 if (pipe_flag == 0)
-			if (isatty(STDIN_FILENO))
                         printString("#cisfun$: ");
                        buffer = _getline(STDIN_FILENO);
                         if (!buffer)
@@ -54,11 +55,36 @@ int main(void)
                         else
                         sig_flag = 1, executor(tokens, linkedlist_path);
                         free(tokens);
-                        cmds = _strtok_r(NULL, "\n;", &saveptr);
+                 	cmds = _strtok_r(NULL, "\n;", &saveptr);
                 }
-
-                free(buffer);
-                }
-                return (0);
+                	free(buffer);
+        	}
+	 return (0);
+	}else {
+	while (1)
+                  {
+                  sig_flag = 0;
+                  if (pipe_flag == 0)
+                          printString("#cisfun$: ");
+                         buffer = _getline(STDIN_FILENO);
+                          if (!buffer)
+                                  break;
+                  cmds = _strtok_r(buffer, "\n;", &saveptr);
+  
+                  while (cmds)
+                  {
+                          tokens = parser(cmds, "\t ");
+                          if (!tokens)
+                                  break;
+                          if (is_builtin(tokens[0]))
+                  is_builtin(tokens[0])(tokens, linkedlist_path, cmds);
+                          else
+                          sig_flag = 1, executor(tokens, linkedlist_path);
+                          free(tokens);
+                          cmds = _strtok_r(NULL, "\n;", &saveptr);
+                  }
+                          free(buffer);
+                  }
+           return (0);
+	}
 }
-
